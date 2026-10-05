@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Google Flow Unlocker"
+  },
+  "extDescription": {
+    "message": "Разблокировка Google Flow (снятие регионального запрета и экранов недоступности) для РФ и РБ"
+  },
+  "actionTitleOn": {
+    "message": "Google Flow Unlocker: ВКЛ"
+  },
+  "actionTitleOff": {
+    "message": "Google Flow Unlocker: ВЫКЛ"
+  }
+}

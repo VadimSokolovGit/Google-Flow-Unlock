@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "version": "1.0.0",
+  "default_locale": "ru",
+  "description": "__MSG_extDescription__",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png",
+    "256": "icons/icon256.png"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking",
+    "webRequestFilterResponse"
+  ],
+  "host_permissions": [
+    "https://flow.google.com/*",
+    "https://*.flow.google.com/*",
+    "https://www.gstatic.com/*"
+  ],
+  "background": {
+    "scripts": ["patch.js", "background.js"]
+  },
+  "action": {
+    "default_title": "__MSG_actionTitleOn__",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png",
+      "256": "icons/icon256.png"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "flow-unlocker@antigravity",
+      "strict_min_version": "110.0"
+    }
+  }
+}

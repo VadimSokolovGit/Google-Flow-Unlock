@@ -1,0 +1,18 @@
+# OS and system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE and temporary files
+.idea/
+.vscode/
+*.log
+*.tmp
+.system_generated/
+scratch/
+
+# Testing scratch scripts
+actual_bundle.js
+test_*.js
+find_*.js
+scratch_*.js

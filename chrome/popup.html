@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Flow Unlocker</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-wrapper">
+          <img class="brand-logo" src="icons/icon48.png" alt="Flow Unlocker">
+        </div>
+        <div class="brand-text">
+          <h1 class="brand-name">Flow Unlocker</h1>
+          <span class="brand-sub">Обход ограничений Google Flow</span>
+        </div>
+      </div>
+      <div id="statusBadge" class="status-badge status-on">
+        <span class="status-dot"></span>
+        <span id="statusText">ВКЛ</span>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-tab="tab-main">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        Главная
+      </button>
+      <button class="nav-tab" data-tab="tab-dns">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        Сеть & DNS
+      </button>
+      <button class="nav-tab" data-tab="tab-logs">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="4 17 10 11 4 5"></polyline>
+          <line x1="12" y1="19" x2="20" y2="19"></line>
+        </svg>
+        Логи
+      </button>
+    </nav>
+
+    <!-- TAB 1: MAIN -->
+    <section id="tab-main" class="tab-content active">
+      <!-- Main Toggle Card -->
+      <div class="card toggle-card">
+        <div class="toggle-info">
+          <span class="toggle-title">Авто-разблокировка</span>
+          <span class="toggle-desc">Патчинг Angular-бандла и снятие блокировки по региону</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="modeToggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Quick Action Button -->
+      <button id="openFlowBtn" class="btn btn-primary">
+        <span id="openFlowBtnText">Открыть Google Flow</span>
+        <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+      </button>
+
+      <!-- Status Summary -->
+      <div class="card info-card">
+        <div class="info-row">
+          <span class="info-label">Статус патчера:</span>
+          <span id="patcherState" class="info-value text-success">Готов к работе</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Последний запуск:</span>
+          <span id="lastRunTime" class="info-value text-muted">Ещё не запускался</span>
+        </div>
+      </div>
+
+      <!-- Notice Box -->
+      <div class="notice-box">
+        <div class="notice-header">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <span>Как это работает</span>
+        </div>
+        <p class="notice-text">
+          Расширение перехватывает скрипт Google Flow на лету и заменяет региональную проверку <code>country_check = true</code>, предотвращая перенаправление на страницу ошибки.
+        </p>
+      </div>
+    </section>
+
+    <!-- TAB 2: DNS & NETWORK -->
+    <section id="tab-dns" class="tab-content">
+      <div class="card dns-card">
+        <h3 class="card-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          Если сайт flow.google.com не грузится
+        </h3>
+        <p class="dns-desc">
+          Провайдеры в РФ могут блокировать прямой доступ к доменам Google Flow. Чтобы сайт открывался <strong>без VPN</strong>, включите безопасный DNS (DoH) в браузере:
+        </p>
+
+        <div class="dns-steps">
+          <div class="dns-step">
+            <span class="step-num">1</span>
+            <div class="step-text">
+              <strong>В Chrome / Edge / Яндекс:</strong> Настройки → Конфиденциальность и безопасность → Безопасность → «Использовать безопасный DNS-сервер».
+            </div>
+          </div>
+          <div class="dns-step">
+            <span class="step-num">2</span>
+            <div class="step-text">
+              <strong>В Firefox:</strong> Настройки → Основные → Параметры сети → «Включить DNS через HTTPS» → Повышенная / Максимальная защита.
+            </div>
+          </div>
+        </div>
+
+        <div class="dns-input-group">
+          <label class="input-label">Рекомендуемый DoH сервер (Bezmezhau / Cloudflare):</label>
+          <div class="copy-input-row">
+            <input type="text" id="dohUrlInput" readonly value="https://cloudflare-dns.com/dns-query" class="code-input">
+            <button id="copyDohBtn" class="btn btn-secondary btn-icon-only" title="Скопировать">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: LOGS -->
+    <section id="tab-logs" class="tab-content">
+      <div class="logs-container">
+        <div class="logs-header">
+          <span class="logs-title">Журнал событий:</span>
+          <button id="copyLogsBtn" class="btn-text">Скопировать логи</button>
+        </div>
+        <div id="logsConsole" class="logs-console">
+          <div class="log-entry log-info">[Flow Unlocker] Журнал инициализирован...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-left">
+        <span class="version-tag">v1.0.0</span>
+        <span class="author-tag">Firefox & Chrome</span>
+      </div>
+      <a href="https://flow.google.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+        flow.google.com
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 17l9.2-9.2M17 17V7H7" />
+        </svg>
+      </a>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

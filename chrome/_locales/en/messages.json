@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Google Flow Unlocker"
+  },
+  "extDescription": {
+    "message": "Unblock Google Flow by overriding regional checks and redirect screens in Russia & Belarus"
+  },
+  "actionTitleOn": {
+    "message": "Google Flow Unlocker: ON"
+  },
+  "actionTitleOff": {
+    "message": "Google Flow Unlocker: OFF"
+  }
+}
